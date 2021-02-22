@@ -265,7 +265,6 @@ class Translate(commands.Cog):
             em = discord.Embed(color=self.mod_color)
             em.set_author(name='Available Languages:', icon_url=ctx.message.author.avatar_url),
             em.description = f'```bf\n{available}```'
-            em.set_footer(text=duration, icon_url='https://i.imgur.com/yeHFKgl.png')
 
             if lang in conv:
                 t = f'{translate(text, lang)}'
@@ -282,7 +281,8 @@ class Translate(commands.Cog):
             lang = dict(zip(conv.values(), conv.keys())).get(lang.lower().title())
             if lang:
                 tn = f'{translate(text, lang)}'
-                em = discord.Embed(description=tn, color=self.user_color)
+                em = discord.Embed(description=f"<{ctx.author.id}> - {tn}", color=self.user_color)
+                await ctx.message_delete()
                 try:
                     await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}')
                 except discord.Forbidden:  # FORBIDDEN (status code: 403): Missing Permissions
