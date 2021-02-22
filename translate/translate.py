@@ -273,7 +273,7 @@ class Translate(commands.Cog):
                 e.add_field(name='Original1', value=f'*```css\n{text}```*', inline=False)
                 e.add_field(name='Translation1', value=f'```css\n{t}```', inline=False)
                 try:
-                    #await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}') - disabled
+                    await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}')
                 except discord.Forbidden:  # FORBIDDEN (status code: 403): Missing Permissions
                     pass
                 return await ctx.send(embed=e)
@@ -284,7 +284,7 @@ class Translate(commands.Cog):
                 em = discord.Embed(description=tn, color=self.user_color)
                 await ctx.message.delete()
                 try:
-                    #await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}') - disabled
+                    await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}')
                 except discord.Forbidden:  # FORBIDDEN (status code: 403): Missing Permissions
                     pass
                 await ctx.send(embed=em)
