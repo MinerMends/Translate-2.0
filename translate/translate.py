@@ -281,7 +281,8 @@ class Translate(commands.Cog):
             lang = dict(zip(conv.values(), conv.keys())).get(lang.lower().title())
             if lang:
                 tn = f'{translate(text, lang)}'
-                em = discord.Embed(description=f"<{ctx.message.author.id}> - {tn}", color=self.user_color)
+                em = discord.Embed(description={tn}, color=self.user_color)
+                await ctx.message.delete()
                 try:
                     await ctx.message.add_reaction('\N{WHITE HEAVY CHECK MARK}')
                 except discord.Forbidden:  # FORBIDDEN (status code: 403): Missing Permissions
